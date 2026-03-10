@@ -1,120 +1,82 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>10x20 Table with TR Short Text Attribute</title>
+<title>NLP Click Test</title>
+
 <style>
-body{
-  font-family: Arial;
-  margin: 20px;
-}
-
-table{
-border-collapse: collapse;
-width: 100%;
-}
-
-th, td{
-border: 1px solid #333;
-padding: 6px;
-text-align: center;
-cursor: pointer;
-}
-
-/* Highlight style for entire row */
-.highlight{
-background-color: yellow;
-transition: background-color 0.3s ease;
-} </style>
-
-</head>
-<body>
-
-<h2>10x20 Table - Short Text Attribute on TR and Row Highlight</h2>
-
-<table>
-  <tr tag="header" title="Header Row" text="header">
-    <!-- Table Header -->
-    <th title="ID">ID</th>
-    <th title="Name">Name</th>
-    <th title="Dept">Dept</th>
-    <th title="City">City</th>
-    <th title="Age">Age</th>
-    <th title="Salary">Salary</th>
-    <th title="Exp">Exp</th>
-    <th title="Email">Email</th>
-    <th title="Phone">Phone</th>
-    <th title="Status">Status</th>
-    <th title="C11">C11</th>
-    <th title="C12">C12</th>
-    <th title="C13">C13</th>
-    <th title="C14">C14</th>
-    <th title="C15">C15</th>
-    <th title="C16">C16</th>
-    <th title="C17">C17</th>
-    <th title="C18">C18</th>
-    <th title="C19">C19</th>
-    <th title="C20">C20</th>
-  </tr>
-
-  <script>
-    const table = document.currentScript.parentNode;
-
-    const rowData = [
-      ["101","Amit","QA","Bangalore","28","50000","3","amit@test.com","9001110001","Active"],
-      ["102","Rahul","Dev","Pune","30","65000","5","rahul@test.com","9001110002","Active"],
-      ["103","Sneha","HR","Mumbai","27","45000","2","sneha@test.com","9001110003","Active"],
-      ["104","Priya","QA","Delhi","29","52000","4","priya@test.com","9001110004","Active"],
-      ["105","Karan","Dev","Hyderabad","31","70000","6","karan@test.com","9001110005","Active"],
-      ["106","Anita","Finance","Chennai","33","72000","7","anita@test.com","9001110006","Active"],
-      ["107","Vijay","Support","Kolkata","26","42000","2","vijay@test.com","9001110007","Active"],
-      ["108","Neha","QA","Noida","28","51000","3","neha@test.com","9001110008","Active"],
-      ["109","Rohit","Dev","Bangalore","32","75000","7","rohit@test.com","9001110009","Active"],
-      ["110","Pooja","HR","Pune","27","46000","3","pooja@test.com","9001110010","Active"]
-    ];
-
-    for(let i=0; i<rowData.length; i++){
-      const tr = document.createElement("tr");
-      tr.setAttribute("tag", "row"+(i+1));
-      tr.setAttribute("title", "Row "+(i+1));
-      tr.setAttribute("text", "row"+(i+1)); // short text attribute
-
-      // First 10 columns: actual data
-      for(let j=0; j<rowData[i].length; j++){
-        const td = document.createElement("td");
-        td.textContent = rowData[i][j];
-        td.title = rowData[i][j];
-        tr.appendChild(td);
-      }
-
-      // Remaining 10 columns: dummy data
-      for(let j=0; j<10; j++){
-        const td = document.createElement("td");
-        const value = String.fromCharCode(65+j) + (i+1); // A1, B1, ...
-        td.textContent = value;
-        td.title = value;
-        tr.appendChild(td);
-      }
-
-      table.appendChild(tr);
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
     }
 
-    // Click on row to highlight entire row
-    table.addEventListener('click', function(e){
-      let tr;
-      if(e.target.tagName === 'TD' || e.target.tagName === 'TH'){
-        tr = e.target.closest('tr');
-      }
-      if(tr){
-        tr.classList.add('highlight');
-        setTimeout(() => {
-          tr.classList.remove('highlight');
-        }, 2000);
-      }
-    });
-  </script>
+    table {
+        border-collapse: collapse;
+        width: 60%;
+    }
 
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    button {
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+function rowAction(text) {
+    alert("Button clicked for row containing: " + text);
+}
+</script>
+
+</head>
+
+<body>
+
+<h2>Test Table</h2>
+<p>Find the row containing <b>"test data"</b> and click the element in that row.</p>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Description</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>Sample</td>
+<td>normal data</td>
+<td><button onclick="rowAction('normal data')">Click</button></td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Testing</td>
+<td>test data example</td>
+<td><button onclick="rowAction('test data')">Click</button></td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Demo</td>
+<td>other value</td>
+<td><button onclick="rowAction('other value')">Click</button></td>
+</tr>
+
+</tbody>
 </table>
 
 </body>
