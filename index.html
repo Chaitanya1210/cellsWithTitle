@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>10x20 Table with TR Text, Title, Tag and Row Highlight</title>
+<title>10x20 Table with TR Short Text Attribute</title>
 <style>
 body{
   font-family: Arial;
@@ -31,10 +31,10 @@ transition: background-color 0.3s ease;
 </head>
 <body>
 
-<h2>10x20 Table - TR Attributes and Row Highlight</h2>
+<h2>10x20 Table - Short Text Attribute on TR and Row Highlight</h2>
 
 <table>
-  <tr tag="header" title="Header Row" text="ID Name Dept City Age Salary Exp Email Phone Status C11 C12 C13 C14 C15 C16 C17 C18 C19 C20">
+  <tr tag="header" title="Header Row" text="header">
     <!-- Table Header -->
     <th title="ID">ID</th>
     <th title="Name">Name</th>
@@ -78,10 +78,7 @@ transition: background-color 0.3s ease;
       const tr = document.createElement("tr");
       tr.setAttribute("tag", "row"+(i+1));
       tr.setAttribute("title", "Row "+(i+1));
-
-      // Combine all cell values as text attribute
-      const textAttr = rowData[i].join(" ") + " " + Array.from({length:10}, (_, j)=>String.fromCharCode(65+j)+(i+1)).join(" ");
-      tr.setAttribute("text", textAttr);
+      tr.setAttribute("text", "row"+(i+1)); // short text attribute
 
       // First 10 columns: actual data
       for(let j=0; j<rowData[i].length; j++){
