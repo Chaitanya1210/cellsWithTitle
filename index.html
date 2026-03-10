@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>10x20 Table with Row Highlight</title>
+<title>10x20 Table with TR Title and Row Highlight</title>
 <style>
 body{
   font-family: Arial;
@@ -31,10 +31,10 @@ transition: background-color 0.3s ease;
 </head>
 <body>
 
-<h2>10x20 Table - Click Row to Highlight</h2>
+<h2>10x20 Table - Row Title and Click Highlight</h2>
 
 <table>
-  <tr tag="header">
+  <tr tag="header" title="Header Row">
     <!-- Table Header -->
     <th title="ID">ID</th>
     <th title="Name">Name</th>
@@ -76,9 +76,10 @@ transition: background-color 0.3s ease;
 
     for(let i=0; i<rowData.length; i++){
       const tr = document.createElement("tr");
-      tr.setAttribute("tag", "row"+(i+1)); // Add custom tag attribute
+      tr.setAttribute("tag", "row"+(i+1));
+      tr.setAttribute("title", "Row "+(i+1)); // Add title attribute for TR
 
-      // First 10 columns: rowData
+      // First 10 columns: actual data
       for(let j=0; j<rowData[i].length; j++){
         const td = document.createElement("td");
         td.textContent = rowData[i][j];
